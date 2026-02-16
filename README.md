@@ -4,9 +4,14 @@
 
 ## 🔗 Live Application
 
-👉 **Live URL:** [https://your-frontend-live-link.com](https://profile-project-pi.vercel.app/)
-👉 **Backend API:** [https://your-backend-live-link.com](https://profile-project-be.onrender.com/api)
-👉 **GitHub Repository:** [https://github.com/m-aysswarya/profile-project](https://github.com/m-aysswarya/profile-project)
+👉 **Live URL:**  
+https://profile-project-pi.vercel.app/
+
+👉 **Backend API:**  
+https://profile-project-be.onrender.com/api
+
+👉 **GitHub Repository:**  
+https://github.com/m-aysswarya/profile-project
 
 ---
 
