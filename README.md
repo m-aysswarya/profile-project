@@ -8,7 +8,7 @@
 https://profile-project-pi.vercel.app/
 
 👉 **Backend API:**  
-https://profile-project-be.onrender.com/api
+https://profile-project-be.onrender.com/api/profile
 
 👉 **GitHub Repository:**  
 https://github.com/m-aysswarya/profile-project
