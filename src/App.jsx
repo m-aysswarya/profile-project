@@ -1,9 +1,12 @@
 import React from 'react'
 import ProfilePage from './pages/ProfilePage'
-
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
-    <ProfilePage />
+    <>
+      <Toaster position="top-right" />
+      <ProfilePage />
+    </>
   )
 }
 

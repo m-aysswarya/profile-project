@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Button from '../ui/Button';
 import { Download, EllipsisVertical, Instagram, Mail, Settings, Share2, UserPen, UserStar } from 'lucide-react';
 import Modal from '../ui/Modal';
+import toast from 'react-hot-toast';
 
 const ProfileHeader = ({ profile }) => {
     const [open, setOpen] = useState(false);
@@ -23,6 +24,16 @@ const ProfileHeader = ({ profile }) => {
         setModalType(type);
         setModalOpen(true);
         setOpen(false);
+    };
+
+    const handleShare = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            toast.success("Profile link copied!");
+            setOpen(false);
+        } catch (err) {
+            toast.error("Failed to copy link");
+        }
     };
 
     return (
@@ -54,14 +65,20 @@ const ProfileHeader = ({ profile }) => {
                             <div className="absolute right-0 lg:left-0 mt-2 w-40 bg-white dark:bg-gray-700 shadow-lg border border-gray-100 dark:border-gray-600 py-2 z-50 rounded-md animate-in fade-in zoom-in-95">
                                 {[
                                     { type: 'profile', icon: <UserPen size={14} className="text-blue-500" />, label: 'Edit Profile' },
-                                    { type: 'profile', icon: <Share2 size={14} className="text-blue-500" />, label: 'Share Profile' },
+                                    { type: 'share', icon: <Share2 size={14} className="text-blue-500" />, label: 'Share Profile' },
                                     { type: 'social', icon: <Instagram size={14} className="text-blue-500" />, label: 'Add Socials' },
                                     { type: 'career', icon: <UserStar size={14} className="text-blue-500" />, label: 'Career Vision' },
                                     { type: 'settings', icon: <Settings size={14} className="text-blue-500" />, label: 'Settings', red: true },
                                 ].map((item, idx) => (
                                     <button
                                         key={idx}
-                                        onClick={() => item.type !== 'settings' && openModal(item.type)}
+                                        onClick={() => {
+                                            if (item.type === "share") {
+                                                handleShare();
+                                            } else if (item.type !== "settings") {
+                                                openModal(item.type);
+                                            }
+                                        }}
                                         className={`flex items-center gap-3 px-4 py-2 text-left text-xs w-full transition-colors duration-200
                       hover:bg-gray-100 dark:hover:bg-gray-600
                       text-gray-900 dark:text-gray-100`}
